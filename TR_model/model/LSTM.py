@@ -29,18 +29,18 @@ class TRLSTM(nn.Module):
 
 		# ============ Static features encoding ============
 		self.MLP_static = nn.Sequential(
-											nn.Linear(nstatic, static_hidden_size),
-											getattr(nn, ACTF)(),
-											nn.Dropout(dropout_static),
+						nn.Linear(nstatic, static_hidden_size),
+						getattr(nn, ACTF)(),
+						nn.Dropout(dropout_static),
 										)
 		
 		# ============ Dynamic features encoding ============
 		self.lstm = nn.LSTM(    input_size=hidden_size,
-								hidden_size=hidden_size,
-								num_layers=num_layers,
-								batch_first=True,
-								bidirectional=False,
-								dropout= dropout if num_layers > 1 else 0.0
+					hidden_size=hidden_size,
+					num_layers=num_layers,
+					batch_first=True,
+					bidirectional=False,
+					dropout= dropout if num_layers > 1 else 0.0
 								)
 		self.dropout = nn.Dropout(dropout)
 		self.temp_emb = TempEmbed(hidden_size)
