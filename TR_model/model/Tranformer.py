@@ -32,20 +32,20 @@ class TRTransformer(nn.Module):
 
 		# ============ Static features encoding ============
 		self.MLP_static = nn.Sequential(
-											nn.Linear(nstatic, static_hidden_size),
-											getattr(nn, ACTF)(),
-											nn.Dropout(dropout_static),
+						nn.Linear(nstatic, static_hidden_size),
+						getattr(nn, ACTF)(),
+						nn.Dropout(dropout_static),
 										)
             
 		# ============ Dynamic features encoding ============
 		self.encoder = nn.Sequential(*[GPT2Block(
-														hidden_size=hidden_size,
-														nheads=nheads,
-														dropout=dropout,
-														ACTF=ACTF
-												)
-
-												for _ in range(nblock)])
+							hidden_size=hidden_size,
+							nheads=nheads,
+							dropout=dropout,
+							ACTF=ACTF
+							)
+						for _ in range(nblock)]
+					    )
 		self.dropout = nn.Dropout(dropout)
 		self.temp_emb = TempEmbed(hidden_size)
 		self.pos_emb = PositionalEmbedding(hidden_size)
