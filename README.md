@@ -4,7 +4,7 @@ This repo is the official Pytorch implementation of the paper: "[LSTM and Transf
 
 ## Get Started
 2. Set up the Python environment using **uv**. To set up the environment, you can run the bash script `./setup_env.sh`.
-1. Download the pre-processed data from [] and unzip the file, e.g., `unzip TRwind.zip -d ./data`
+1. Download the pre-processed data from the [Zenodo repo](https://zenodo.org/records/15284192/files/TRWind.zip?download=1) and unzip the file, e.g., `unzip TRwind.zip -d ./data`
 2. Train the model using the bash scripts:
     - Cross-validation: `bash ./train_kfold.sh`
     - To reproduce the training and test experiment in the paper: `bash ./train_test.sh`
